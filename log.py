@@ -14,12 +14,22 @@ def log(func):
         if os.path.exists("logs.csv"):
             file_df = pd.read_csv('logs.csv')
             new_id = len(file_df)
-            new_row = pd.DataFrame({'id': [new_id],'pc_username': [username],'function_name': [func_name],
-                                    'Date in date.month.year': [formatted_date],'Time': [formatted_time]})
+            new_row = pd.DataFrame({
+                'id': [new_id],
+                'pc_username': [username],
+                'function_name': [func_name],
+                'Date in date.month.year': [formatted_date],
+                'Time': [formatted_time]
+            })
             new_row.to_csv('logs.csv', mode='a', header=False, index=False)
         else:
-            df = pd.DataFrame({'id': [0],'pc_username': [username],'function_name': [func_name],
-                'Date in date.month.year': [formatted_date],'Time': [formatted_time]})
+            df = pd.DataFrame({
+                'id': [0],
+                'pc_username': [username],
+                'function_name': [func_name],
+                'Date in date.month.year': [formatted_date],
+                'Time': [formatted_time]
+            })
             df.to_csv('logs.csv', index=False)
 
         return original_result

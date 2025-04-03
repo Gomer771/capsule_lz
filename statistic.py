@@ -3,13 +3,16 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+from log import log
 
 #создание класа
+
 class GraphicStatistics:
+
     def __init__(self, df_path):
         
         self.df = pd.read_csv(df_path) #чтение данных из файла csv.
-
+    @log
     def histogram(self): #определение метода для создания гистограммы
         
         grouped_df = self.df.groupby("STATE", as_index=False).mean() #группировка данных по колонке state
@@ -82,6 +85,6 @@ def main():
     df_path = 'states.csv'  
     stats = GraphicStatistics(df_path)
     stats.histogram()
-    
+
 if __name__ == "__main__":
     main()
